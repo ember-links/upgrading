@@ -153,11 +153,11 @@ ember-cli-content-security-policy is [no longer included by default](https://git
 
 Time to nombom and hope that there aren't any issues.
 
-`rm -rf node_modules bower_components dist tmp`
-`npm cache clean`
-`bower cache clean`
-`npm i`
-`bower i`
+- `rm -rf node_modules bower_components dist tmp`
+- `npm cache clean`
+- `bower cache clean`
+- `npm i`
+- `bower i`
 
 Then run your tests and see if there are any issues building or any deprecations.
 
