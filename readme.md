@@ -56,6 +56,7 @@ check
 updates
 
 - broccoli-asset-rev to `"broccoli-asset-rev": "2.4.2"`
+- ember-cli-babel to `"ember-cli-babel": "5.1.6"`
 - ember-cli-htmlbars to `"ember-cli-htmlbars": "1.0.3"`
 - ember-cli-inject-live-reload to `"ember-cli-inject-live-reload": "1.4.0"`
 - ember-cli-qunit to `"ember-cli-qunit": "1.4.0"`
@@ -70,7 +71,6 @@ check correct version
 - ember-ajax is `"ember-ajax": "0.7.1"`
 - ember-cli is `"ember-cli": "2.4.3"`
 - ember-cli-app-version is `"ember-cli-app-version": "1.0.0"`
-- ember-cli-babel is `"ember-cli-babel": "5.1.6"`
 - ember-cli-dependency-checker is `"ember-cli-dependency-checker": "1.2.0"`
 - ember-cli-htmlbars-inline-precompile is `"ember-cli-htmlbars-inline-precompile": "0.3.1"`
 - ember-cli-release is `"ember-cli-release": "0.2.8"`
@@ -93,7 +93,8 @@ ember-cli-content-security-policy is [no longer included by default](https://git
      "ember-ajax": "0.7.1",
      "ember-cli": "2.4.3",
      "ember-cli-app-version": "1.0.0",
-     "ember-cli-babel": "5.1.6",
+-    "ember-cli-babel": "5.1.5",
++    "ember-cli-babel": "5.1.6",
      "ember-cli-content-security-policy": "0.4.0",
      "ember-cli-dependency-checker": "1.2.0",
 -    "ember-cli-htmlbars": "1.0.1",
