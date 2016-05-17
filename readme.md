@@ -26,7 +26,10 @@ updates
 
 check
 
-```js
+- ember-cli-test-loader is `"ember-cli-test-loader": "0.2.2"`
+- ember-qunit-notifications is `"ember-qunit-notifications": "0.1.0"`
+
+```diff
 
  {
    "dependencies": {
