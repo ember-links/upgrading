@@ -15,7 +15,14 @@ But in reality I had to make a few more updates, listed below.
 
 ###Running `ember init`
 
-As usual, the main files to worry about were bower.json & package.json
+The only files I hit `Y` to overwrite were
+
+- `.travis.yml`
+- `tests/helpers/module-for-acceptance.js` (destroyApp moved after conditional)
+
+Though check that the you're `index.html`& `tests/index.html` look OK because there have been some subtle updates in the use of double quotes for `content-for` tags. For `tests/index.html` you might also want to check that you have `<script src="testem.js" integrity=""></script>` included now.
+
+No other files appeared to have any code that needed to be updated, except for bower.json & package.json — the usual culprits — which I always prefer not to overwrite automatically and update by hand afterwards (see below).
 
 ####bower.json
 
