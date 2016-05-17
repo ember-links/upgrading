@@ -13,11 +13,11 @@ Folding together the changes listed made this:
 
 But in reality I had to make a few more updates, listed below.
 
-`ember init`
+###Running `ember init`
 
 As usual, the main files to worry about were bower.json & package.json
 
-###bower.json
+####bower.json
 
 updates
 
@@ -44,7 +44,7 @@ check
 
 ```
 
-###package.json
+####package.json
 
 updates
 
@@ -78,7 +78,7 @@ now optional (can keep if already using)
 
 ember-cli-content-security-policy is [no longer included by default](https://github.com/ember-cli/ember-cli/blob/ec81775f7f5695ea423dfb19693b5f63be1580fd/CHANGELOG.md#changes-since-11315)
 
-```js
+```diff
 
    "devDependencies": {
 -    "broccoli-asset-rev": "2.2.0",
