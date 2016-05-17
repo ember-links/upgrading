@@ -1,5 +1,9 @@
 #Upgrading to Ember 2
 
+### Flushing Deprecations
+
+`deprecationWorkflow.flushDeprecations()`
+
 ## Upgrading to Ember 2.4.3
 
 Once Ember CLI is at v2.3.0 then it is a decision to make whether to update each dot release, or to roll them into one.
@@ -13,9 +17,31 @@ Folding together the changes listed made this:
 
 But in reality I had to make a few more updates, listed below.
 
+###Install Ember CLI
+
+Taken from the [official guides](http://ember-cli.com/user-guide/#upgrading)
+
+Install Ember CLI Globally
+
+- `npm uninstall -g ember-cli`
+- `npm cache clean`
+- `bower cache clean`
+- `npm install -g ember-cli@2.4.3`
+
+Update Project
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm install ember-cli@2.4.3 --save-dev`
+- `npm install`
+- `bower install`
+
 ###Running `ember init`
 
-The only files I hit `Y` to overwrite were
+Begin the process of updating your project files
+
+- `ember init`
+
+For this version the only files I hit `Y` to overwrite were
 
 - `.travis.yml`
 - `tests/helpers/module-for-acceptance.js` (destroyApp moved after conditional)
@@ -122,3 +148,30 @@ ember-cli-content-security-policy is [no longer included by default](https://git
  }
 
 ```
+
+###Testing the new version
+
+Time to nombom and hope that there aren't any issues.
+
+`rm -rf node_modules bower_components dist tmp`
+`npm cache clean`
+`bower cache clean`
+`npm i`
+`bower i`
+
+Then run your tests and see if there are any issues building or any deprecations.
+
+`ember test --server`
+
+If you do find and issues, don’t panic. Often these can be caused by addons and fixed by simply updated to a newer version.
+
+Once everything is working you may also have some deprecations, these should be handled in the usual way.
+
+In my case from upgrading from Ember CLI 2.3.0 -> 2.4.3 it just worked™
+
+:rocket:
+
+## Upgrading to Ember 2.5.0
+
+
+
