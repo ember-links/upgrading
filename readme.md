@@ -1,11 +1,32 @@
+#Upgrading to Ember 2
+
 ## Upgrading to Ember 2.4.3
 
-After running ember init I needed to update my bower.json with these updates
+Once Ember CLI is at v2.3.0 then it is a decision to make whether to update each dot release, or to roll them into one.
+
+As the upgrade guide suggested there were not too many user changes to make between the dot releases I updated from 2.3.0 directly to 2.4.3
+
+Folding together the changes listed made this:
+
+- update ember-cli-sri in package.json to 2.1.0
+- rename testem.json to testem.js
+
+But in reality I had to make a few more updates, listed below.
+
+`ember init`
+
+As usual, the main files to worry about were bower.json & package.json
+
+###bower.json
+
+updates
 
 - ember to `"ember": "2.4.3"`
 - ember-cli-shims to `"ember-cli-shims": "0.1.1"`
 
-```diff
+check
+
+```js
 
  {
    "dependencies": {
@@ -20,7 +41,7 @@ After running ember init I needed to update my bower.json with these updates
 
 ```
 
-package.json required
+###package.json
 
 updates
 
@@ -46,11 +67,15 @@ check correct version
 - ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
 - ember-resolver is `"ember-resolver": "2.0.3"`
 
-notes
+remove
 
-ember-cli-content-security-policy is now optional due to developer ergonomics
+- [ember-disable-proxy-controllers](https://github.com/ember-cli/ember-cli/pull/5678)
 
-```diff
+now optional (can keep if already using)
+
+ember-cli-content-security-policy is [no longer included by default](https://github.com/ember-cli/ember-cli/blob/ec81775f7f5695ea423dfb19693b5f63be1580fd/CHANGELOG.md#changes-since-11315)
+
+```js
 
    "devDependencies": {
 -    "broccoli-asset-rev": "2.2.0",
@@ -74,6 +99,7 @@ ember-cli-content-security-policy is now optional due to developer ergonomics
      "ember-cli-uglify": "1.2.0",
 -    "ember-data": "2.3.0",
 +    "ember-data": "2.4.2",
+-    "ember-disable-proxy-controllers": "1.0.1"
 -    "ember-export-application-global": "1.0.4",
 +    "ember-export-application-global": "1.0.5",
 -    "ember-load-initializers": "0.5.0",
