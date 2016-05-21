@@ -1,5 +1,13 @@
 #Upgrading to Ember 2
 
+###Managing NPM Dependencies
+
+> The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.
+
+I’ve found once or twice this has caused some issues (at least I *think* it was the cause), so I tend to prefer to use strict versions and update the dependencies myself explicitly.
+
+I’d be interested to hear if you think this is a good/bad idea and why.
+
 ### Flushing Deprecations
 
 `deprecationWorkflow.flushDeprecations()`
@@ -113,6 +121,7 @@ ember-cli-content-security-policy is [no longer included by default](https://git
 
 ```diff
 
+ {
    "devDependencies": {
 -    "broccoli-asset-rev": "2.2.0",
 +    "broccoli-asset-rev": "2.4.2",
@@ -194,4 +203,88 @@ Update Project
 Begin the process of updating your project files
 
 - `ember init`
+
+####bower.json
+
+update
+
+- ember to `"ember": "2.5.0"`
+
+check
+
+- ember-cli-shims is `"ember-cli-shims": "0.1.1"`
+- ember-cli-test-loader is `"ember-cli-test-loader": "0.2.2"`
+- ember-qunit-notifications is `"ember-qunit-notifications": "0.1.0"`
+
+```diff
+
+ {
+   "dependencies": {
+-    "ember": "2.4.3",
++    "ember": "2.5.0",
+     "ember-cli-shims": "0.1.1",
+     "ember-cli-test-loader": "0.2.2",
+     "ember-qunit-notifications": "0.1.0"
+   }
+ }
+
+```
+
+####package.json
+
+add
+
+- ember-cli-jshint as `"ember-cli-jshint": "1.0.0"`
+
+update
+
+- ember-data to `"ember-data": "2.5.0"`
+- loader.js to `"loader.js": "4.0.1"`
+
+check
+
+- broccoli-asset-rev is `"broccoli-asset-rev": "2.4.2"`
+- ember-ajax is `"ember-ajax": "0.7.1"`
+- ember-cli-app-version is `"ember-cli-app-version": "1.0.0"`
+- ember-cli-babel is `"ember-cli-babel": "5.1.6"`
+- ember-cli-dependency-checker is `"ember-cli-dependency-checker": "1.2.0"`
+- ember-cli-htmlbars is `"ember-cli-htmlbars": "1.0.3"`
+- ember-cli-htmlbars-inline-precompile is `"ember-cli-htmlbars-inline-precompile": "0.3.1"`
+- ember-cli-inject-live-reload is `"ember-cli-inject-live-reload": "1.4.0"`
+- ember-cli-qunit is `"ember-cli-qunit": "1.4.0"`
+- ember-cli-release is `"ember-cli-release": "0.2.8"`
+- ember-cli-sri is `"ember-cli-sri": "2.1.0"`
+- ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
+- ember-export-application-global is `"ember-export-application-global": "1.0.5"`
+- ember-load-initializers is `"ember-load-initializers": "0.5.1"`
+- ember-resolver is `"ember-resolver": "2.0.3"`
+
+```diff
+
+ {
+   "devDependencies": {
+     "broccoli-asset-rev": "2.4.2",
+     "ember-ajax": "0.7.1",
+     "ember-cli-app-version": "1.0.0",
+     "ember-cli-babel": "5.1.6",
+     "ember-cli-dependency-checker": "1.2.0",
+     "ember-cli-htmlbars": "1.0.3",
+     "ember-cli-htmlbars-inline-precompile": "0.3.1",
+     "ember-cli-inject-live-reload": "1.4.0",
++    "ember-cli-jshint": "1.0.0",
+     "ember-cli-qunit": "1.4.0",
+     "ember-cli-release": "0.2.8",
+     "ember-cli-sri": "2.1.0",
+     "ember-cli-uglify": "1.2.0",
+-    "ember-data": "2.4.2",
++    "ember-data": "2.5.0",
+     "ember-export-application-global": "1.0.5",
+     "ember-load-initializers": "0.5.1",
+     "ember-resolver": "2.0.3",
+-    "loader.js": "4.0.0",
++    "loader.js": "4.0.1"
+   }
+ }
+
+```
 
