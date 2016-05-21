@@ -19,7 +19,7 @@ But in reality I had to make a few more updates, listed below.
 
 ###Install Ember CLI
 
-Taken from the [official guides](http://ember-cli.com/user-guide/#upgrading)
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.4.3)
 
 Install Ember CLI Globally
 
@@ -171,7 +171,27 @@ In my case from upgrading from Ember CLI 2.3.0 -> 2.4.3 it just worked™
 
 :rocket:
 
-## Upgrading to Ember 2.5.0
+## Upgrading to Ember 2.5.1
 
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.5.1)
 
+Install Ember CLI Globally
+
+- `npm uninstall -g ember-cli`
+- `npm cache clean`
+- `bower cache clean`
+- `npm install -g ember-cli@2.5.1`
+
+Update Project
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm install ember-cli@2.5.1 --save-dev`
+- `npm install`
+- `bower install`
+
+###Running `ember init`
+
+Begin the process of updating your project files
+
+- `ember init`
 
