@@ -288,3 +288,26 @@ check
 
 ```
 
+###Testing the new version
+
+Time to nombom and hope that there aren't any issues.
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm cache clean`
+- `bower cache clean`
+- `npm i`
+- `bower i`
+
+Then run your tests and see if there are any issues building or any deprecations.
+
+`ember test --server`
+
+In this instance my test which included mock uploading files all broke.
+
+After some investigation it transpired that the issue was to do with the new [native events used in testing](http://emberjs.com/blog/2016/04/11/ember-2-5-released.html#toc_native-event-test-helpers).
+
+To help anyone else that comes across this issue when upgrading I wrote a [short blog post on how to update your tests](https://medium.com/@chrisdmasters/acceptance-testing-file-uploads-in-ember-2-5-1c9c8dbe5368)
+
+Besides that everything else was fine.
+
+:rocket: :rocket:
