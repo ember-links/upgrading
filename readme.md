@@ -208,7 +208,7 @@ Begin the process of updating your project files
 
 update
 
-- ember to `"ember": "2.5.0"`
+- ember to `"ember": "2.5.1"`
 
 check
 
@@ -221,7 +221,7 @@ check
  {
    "dependencies": {
 -    "ember": "2.4.3",
-+    "ember": "2.5.0",
++    "ember": "2.5.1",
      "ember-cli-shims": "0.1.1",
      "ember-cli-test-loader": "0.2.2",
      "ember-qunit-notifications": "0.1.0"
