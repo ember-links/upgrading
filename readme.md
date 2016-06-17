@@ -265,6 +265,7 @@ check
    "devDependencies": {
      "broccoli-asset-rev": "2.4.2",
      "ember-ajax": "0.7.1",
+     "ember-cli": "2.5.1",
      "ember-cli-app-version": "1.0.0",
      "ember-cli-babel": "5.1.6",
      "ember-cli-dependency-checker": "1.2.0",
@@ -311,3 +312,120 @@ To help anyone else that comes across this issue when upgrading I wrote a [short
 Besides that everything else was fine.
 
 :rocket: :rocket:
+
+## Upgrading to Ember 2.6.1
+
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.6.1)
+
+Install Ember CLI Globally
+
+- `npm uninstall -g ember-cli`
+- `npm cache clean`
+- `bower cache clean`
+- `npm install -g ember-cli@2.6.1`
+
+Update Project
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm install ember-cli@2.6.1 --save-dev`
+- `npm install`
+- `bower install`
+
+###Running `ember init`
+
+Begin the process of updating your project files
+
+- `ember init`
+
+####bower.json
+
+update
+
+- ember to `"ember": "2.6.0"`
+
+check
+
+- ember-cli-shims is `"ember-cli-shims": "0.1.1"`
+- ember-cli-test-loader is `"ember-cli-test-loader": "0.2.2"`
+- ember-qunit-notifications is `"ember-qunit-notifications": "0.1.0"`
+
+```diff
+
+ {
+   "dependencies": {
+-    "ember": "2.5.1",
++    "ember": "2.6.0",
+     "ember-cli-shims": "0.1.1",
+     "ember-cli-test-loader": "0.2.2",
+     "ember-qunit-notifications": "0.1.0"
+   }
+ }
+
+```
+
+####package.json
+
+update
+
+- ember-cli-jshint to `"ember-cli-jshint": "1.0.4"`
+- ember-cli-qunit to `"ember-cli-qunit": "2.0.2"`
+- ember-data to `"ember-data": "2.6.1"`
+- loader.js to `"loader.js": "4.0.9"`
+
+check
+
+- broccoli-asset-rev is `"broccoli-asset-rev": "2.4.2"`
+- ember-ajax is `"ember-ajax": "2.4.1"`
+- ember-cli-app-version is `"ember-cli-app-version": "1.0.0"`
+- ember-cli-babel is `"ember-cli-babel": "5.1.6"`
+- ember-cli-dependency-checker is `"ember-cli-dependency-checker": "1.2.0"`
+- ember-cli-htmlbars is `"ember-cli-htmlbars": "1.0.8"`
+- ember-cli-htmlbars-inline-precompile is `"ember-cli-htmlbars-inline-precompile": "0.3.2"`
+- ember-cli-inject-live-reload is `"ember-cli-inject-live-reload": "1.4.0"`
+- ember-cli-release is `"ember-cli-release": "0.2.8"`
+- ember-cli-sri is `"ember-cli-sri": "2.1.0"`
+- ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
+- ember-export-application-global is `"ember-export-application-global": "1.0.5"`
+- ember-load-initializers is `"ember-load-initializers": "0.5.1"`
+- ember-resolver is `"ember-resolver": "2.0.3"`
+
+
+```diff
+
+ {
+   "devDependencies": {
+     "broccoli-asset-rev": "2.4.2",
+     "ember-ajax": "2.4.1",
+     "ember-cli": "2.6.1",
+     "ember-cli-app-version": "1.0.0",
+     "ember-cli-babel": "5.1.6",
+     "ember-cli-dependency-checker": "1.2.0",
+     "ember-cli-htmlbars": "1.0.8",  
+     "ember-cli-htmlbars-inline-precompile": "0.3.2",
+     "ember-cli-inject-live-reload": "1.4.0",
+-    "ember-cli-jshint": "1.0.3",
++    "ember-cli-jshint": "1.0.4",
+-    "ember-cli-qunit": "1.4.0",
++    "ember-cli-qunit": "2.0.2",
+     "ember-cli-release": "0.2.8",
+     "ember-cli-sri": "2.1.0",
+     "ember-cli-uglify": "1.2.0",
+-    "ember-data": "2.5.3",
++    "ember-data": "2.6.1",
+     "ember-export-application-global": "1.0.5",
+     "ember-load-initializers": "0.5.1",
+     "ember-resolver": "2.0.3",
+-    "loader.js": "4.0.7",
++    "loader.js": "4.0.9"
+   }
+ }
+
+```
+
+Yes to `tests/helpers/module-for-acceptance.js` as there have been some changes to the way it works.
+
+Finally, at the moment some addons have not yet updated to [include a call to super in the init() method](https://github.com/ember-cli/core-object/blob/master/core-object.js#L53-L57)
+
+For me there were no deprecations to update in my code this time.
+
+:rocket: :rocket: :rocket:
