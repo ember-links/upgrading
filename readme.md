@@ -311,3 +311,221 @@ To help anyone else that comes across this issue when upgrading I wrote a [short
 Besides that everything else was fine.
 
 :rocket: :rocket:
+
+## Upgrading to Ember 2.7.0
+
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.7.0)
+
+Install Ember CLI Globally
+
+- `npm uninstall -g ember-cli`
+- `npm cache clean`
+- `bower cache clean`
+- `npm install -g ember-cli@2.7.0`
+
+Update Project
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm install ember-cli@2.7.0 --save-dev`
+- `npm install`
+- `bower install`
+
+###Running `ember init`
+
+Begin the process of updating your project files
+
+- `ember init`
+
+Personally I wasn’t bothered by the editor config changes
+
+####.jshintrc
+
+```diff
+-  "esnext": true,
++  "esversion": 6,
+```
+
+####index.html
+
+This is important as relates to the new approach to URLs
+
+see http://emberjs.com/blog/2016/04/28/baseURL.html
+
+Effectively add the rootURL to the asset URLs
+
+```diff
+-    <link rel="stylesheet" href="assets/vendor.css">
+-    <link rel="stylesheet" href="assets/instatube-app.css">
++    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
++    <link rel="stylesheet" href="{{rootURL}}assets/instatube-app.css">
+```
+
+```diff
+-    <script src="assets/vendor.js"></script>
+-    <script src="assets/instatube-app.js"></script>
++    <script src="{{rootURL}}assets/vendor.js"></script>
++    <script src="{{rootURL}}assets/instatube-app.js"></script>
+```
+
+####router.js
+
+Add rootURL to Router with
+
+```diff
+-const Router = Ember.Router.extend(googlePageview, {
+-  location: config.locationType
++const Router = Ember.Router.extend({
++  location: config.locationType,
++  rootURL: config.rootURL
+ });
+ ```
+
+####bower.json
+
+update
+
+- ember to `"ember": "2.7.0"`
+
+check
+
+- ember-cli-shims is `"ember-cli-shims": "0.1.1"`
+- ember-qunit-notifications is `"ember-qunit-notifications": "0.1.0"`
+
+remove
+
+- ember-cli-test-loader (now via npm)
+
+```diff
+-    "ember": "2.6.0",
++    "ember": "2.7.0",
+     "ember-cli-shims": "0.1.1",
+-    "ember-cli-test-loader": "0.2.2",
+     "ember-qunit-notifications": "0.1.0"
+```
+####config.js
+
+For the new baseURL and rootURL change
+
+in the ENV
+
+```diff
+-    baseURL: '/',
+-    locationType: 'history',
++    rootURL: '/',
++    locationType: 'auto',
+```
+
+and in 
+
+```diff
+   if (environment === 'test') {
+     // Testem prefers this...
+-    ENV.baseURL = '/';
+-    ENV.locationType = 'auto';
++    ENV.locationType = 'none';
+```
+
+####package.json
+
+add
+
+- ember-cli-test-loader to `"ember-cli-test-loader": "1.1.0`
+
+update
+
+- broccoli-asset-rev to `"broccoli-asset-rev": "2.4.5"`
+- ember-ajax to `"ember-ajax": "2.4.1"`
+- ember-cli to `"ember-cli": "2.7.0"`
+- ember-cli-babel to `"ember-cli-babel": "5.1.7"`
+- ember-cli-dependency-checker to `"ember-cli-dependency-checker": "1.3.0"`
+- ember-cli-htmlbars to `"ember-cli-htmlbars": "1.0.10"`
+- ember-cli-htmlbars to `"ember-cli-htmlbars-inline-precompile": "0.3.3"`
+- ember-cli-inject-live-reload to `"ember-cli-inject-live-reload": "1.4.1"`
+- ember-cli-jshint to `"ember-cli-jshint": "1.0.4"`
+- ember-cli-qunit to `"ember-cli-qunit": "2.1.0"`
+- ember-cli-release to `"ember-cli-release": "0.2.9"`
+- ember-data to `"ember-data": "2.7.0"`
+- loader.js to `"loader.js": "4.0.10"`
+
+check
+
+- ember-cli-app-version is `"ember-cli-app-version": "1.0.0"`
+- ember-cli-sri is `"ember-cli-sri": "2.1.0"`
+- ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
+- ember-export-application-global is `"ember-export-application-global": "1.0.5"`
+- ember-load-initializers is `"ember-load-initializers": "0.5.1"`
+- ember-resolver is `"ember-resolver": "2.0.3"`
+
+```diff
+
+ {
+   "devDependencies": {
+-    "broccoli-asset-rev": "2.4.2",
++    "broccoli-asset-rev": "2.4.5",
+-    "ember-ajax": "0.7.1",
++    "ember-ajax": "2.4.1",
+     "ember-cli-app-version": "1.0.0",
+-    "ember-cli-babel": "5.1.6",
++    "ember-cli-babel": "5.1.7",
+-    "ember-cli-dependency-checker": "1.2.0",
++    "ember-cli-dependency-checker": "1.3.0",
+-    "ember-cli-htmlbars": "1.0.3",
++    "ember-cli-htmlbars": "1.0.10",
+-    "ember-cli-htmlbars-inline-precompile": "0.3.1",
++    "ember-cli-htmlbars-inline-precompile": "0.3.3",
+-    "ember-cli-inject-live-reload": "1.4.0",
++    "ember-cli-inject-live-reload": "1.4.1",
+-    "ember-cli-jshint": "1.0.0",
++    "ember-cli-jshint": "1.0.4",
+-    "ember-cli-qunit": "1.4.0",
++    "ember-cli-qunit": "2.1.0",
+-    "ember-cli-release": "0.2.8",
++    "ember-cli-release": "0.2.9",
+     "ember-cli-sri": "2.1.0",
+     "ember-cli-uglify": "1.2.0",
+-    "ember-data": "2.5.0",
++    "ember-data": "2.7.0",
+     "ember-export-application-global": "1.0.5",
+     "ember-load-initializers": "0.5.1",
+     "ember-resolver": "2.0.3",
+-    "loader.js": "4.0.1",
++    "loader.js": "4.0.10"
+   }
+ }
+
+```
+
+
+####tests/.jshintrc
+
+```diff
+-  "esnext": true,
++  "esversion": 6,
+```
+
+####tests/index.html
+
+Updates once again for the new rootURL changes
+
+```diff
+-    <link rel="stylesheet" href="assets/vendor.css">
+-    <link rel="stylesheet" href="assets/instatube-app.css">
+-    <link rel="stylesheet" href="assets/test-support.css">
++    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
++    <link rel="stylesheet" href="{{rootURL}}assets/instatube-app.css">
++    <link rel="stylesheet" href="{{rootURL}}assets/test-support.css">
+```
+
+```diff
+-    <script src="testem.js" integrity=""></script>
+-    <script src="assets/vendor.js"></script>
+-    <script src="assets/test-support.js"></script>
+-    <script src="assets/instatube-app.js"></script>
+-    <script src="assets/tests.js"></script>
+-    <script src="assets/test-loader.js"></script>
++    <script src="{{rootURL}}testem.js" integrity=""></script>
++    <script src="{{rootURL}}assets/vendor.js"></script>
++    <script src="{{rootURL}}assets/test-support.js"></script>
++    <script src="{{rootURL}}assets/instatube-app.js"></script>
++    <script src="{{rootURL}}assets/tests.js"></script>
+```
