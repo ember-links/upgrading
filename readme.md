@@ -1,5 +1,7 @@
 #Upgrading Ember CLI
 
+This is a guide I’ve written to document my experience in the hope that it could be useful to others going through the same process. It’s quite possible some of the recommendations I’ve made are not best practice (though they have worked for me) so I’d love to get any feedback and suggestions if you have them.
+
 ##First, a little background
 
 Upgrading from Ember 1.13 to 2.x was something which for a time I was nervous about attempting. At that point in time my project had very limited (if any) tests and I was seeing a lot of deprecations logged both via the console and when I used Ember Inspector.
@@ -35,6 +37,10 @@ I’d be interested to hear if you think this is a good/bad idea and why.
 I’ve found that [Greenkeeper.io](https://greenkeeper.io/) is a great help for keeping up to date with each of the npm packages as they are updated between Ember CLI releases.
 
 You’ll see in each individual guide the specific version numbers which I updated at the time (though if you are reading this for a very old version it may need to be double checked). One thing I can say is that the compatability was correct at the time so there is a pinned version which should still work.
+
+###Working on a new branch
+
+Before starting the upgrade process I always create a new branch to make it easy to get back to the previous state if something goes horribly wrong.
 
 #Upgrading to specific versions guides
 
@@ -577,7 +583,7 @@ and in
 
 add
 
-- ember-cli-test-loader to `"ember-cli-test-loader": "1.1.0`
+- ember-cli-test-loader to `"ember-cli-test-loader": "1.1.0"`
 
 update
 
@@ -612,6 +618,8 @@ check
 +    "broccoli-asset-rev": "2.4.5",
 -    "ember-ajax": "0.7.1",
 +    "ember-ajax": "2.4.1",
+-    "ember-cli": "2.6.1",
++    "ember-cli": "2.7.0",
      "ember-cli-app-version": "1.0.0",
 -    "ember-cli-babel": "5.1.6",
 +    "ember-cli-babel": "5.1.7",
@@ -630,8 +638,9 @@ check
 -    "ember-cli-release": "0.2.8",
 +    "ember-cli-release": "0.2.9",
      "ember-cli-sri": "2.1.0",
++    "ember-cli-test-loader": "1.1.0",
      "ember-cli-uglify": "1.2.0",
--    "ember-data": "2.5.0",
+-    "ember-data": "2.6.1",
 +    "ember-data": "2.7.0",
      "ember-export-application-global": "1.0.5",
      "ember-load-initializers": "0.5.1",
@@ -695,3 +704,111 @@ Key changes required
 Beyond that there were a couple of very minor issues which were bugs in mind code that hadn't really been an issue before but for some reason now broke my tests. It was all to do with async testing and resolving promises, but were pretty trivial to fix.
 
 :rocket: :rocket: :rocket: :rocket:
+
+## Upgrading to Ember 2.8.0-beta.1
+
+This time I updated to the beta version as I wanted to upgrade to Glimmer 2 (Ember 2.9.0-alpha) as soon as possible to help test the alpha version and thought that it would be a better starting point.
+
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.8.0-beta.1)
+
+Install Ember CLI Globally
+
+- `npm uninstall -g ember-cli`
+- `npm cache clean`
+- `bower cache clean`
+- `npm install -g ember-cli@2.8.0-beta.1`
+
+Update Project
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm install ember-cli@2.8.0-beta.1 --save-dev`
+- `npm install`
+- `bower install`
+
+###Running `ember init`
+
+Begin the process of updating your project files
+
+- `ember init`
+
+####bower.json
+
+update
+
+- ember to `"ember": "2.8.0-beta.1"`
+
+check
+
+- ember-cli-shims is `"ember-cli-shims": "0.1.1"`
+
+remove
+
+- ember-qunit-notifications
+
+```diff
+   "dependencies": {
+-    "ember": "2.7.0",
++    "ember": "2.8.0-beta.1",
+-    "ember-qunit-notifications": "0.1.0"
+```
+
+####package.json
+
+update
+
+- ember-cli to `"ember-cli": "2.8.0-beta.1"`
+- ember-data to `"ember-data": "2.8.0-beta.1"`
+
+check
+
+- broccoli-asset-rev is `"broccoli-asset-rev": "2.4.5"`
+- ember-ajax is `"ember-ajax": "2.4.1"`
+- ember-cli-app-version is `"ember-cli-app-version": "1.0.0"`
+- ember-cli-babel is `"ember-cli-babel": "5.1.7"`
+- ember-cli-dependency-checker is `"ember-cli-dependency-checker": "1.3.0"`
+- ember-cli-htmlbars is `"ember-cli-htmlbars": "1.0.10"`
+- ember-cli-htmlbars is `"ember-cli-htmlbars-inline-precompile": "0.3.3"`
+- ember-cli-inject-live-reload is `"ember-cli-inject-live-reload": "1.4.1",`
+- ember-cli-jshint is `"ember-cli-jshint": "1.0.4"`
+- ember-cli-qunit is `"ember-cli-qunit": "2.1.0"`
+- ember-cli-release is `"ember-cli-release": "0.2.9"`
+- ember-cli-sri is `"ember-cli-sri": "2.1.0"`
+- ember-cli-test-loader is `"ember-cli-test-loader": "1.1.0"`
+- ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
+- ember-export-application-global is `"ember-export-application-global": "1.0.5"`
+- ember-load-initializers is `"ember-load-initializers": "0.5.1"`
+- ember-resolver is `"ember-resolver": "2.0.3"`
+- loader.js to `"loader.js": "4.0.10"`
+
+
+```diff
+
+ {
+   "devDependencies": {
+     "broccoli-asset-rev": "2.4.5",
+     "ember-ajax": "2.4.1",
+-    "ember-cli": "2.7.0",
++    "ember-cli": "2.8.0-beta.1",
+     "ember-cli-app-version": "1.0.0",
+     "ember-cli-babel": "5.1.7",
+     "ember-cli-dependency-checker": "1.3.0",
+     "ember-cli-htmlbars": "1.0.10",
+     "ember-cli-htmlbars-inline-precompile": "0.3.3",
+     "ember-cli-inject-live-reload": "1.4.1",
+     "ember-cli-jshint": "1.0.4",
+     "ember-cli-qunit": "2.1.0",
+     "ember-cli-release": "0.2.9",
+     "ember-cli-sri": "2.1.0",
+     "ember-cli-test-loader": "1.1.0",
+     "ember-cli-uglify": "1.2.0",
+-    "ember-data": "2.7.0",
++    "ember-data": "2.8.0-beta.1",
+     "ember-export-application-global": "1.0.5",
+     "ember-load-initializers": "0.5.1",
+     "ember-resolver": "2.0.3",
+     "loader.js": "4.0.10"
+   }
+ }
+
+```
+
