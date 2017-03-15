@@ -849,8 +849,8 @@ update
 
 ```diff
    "dependencies": {
-+    "ember-qunit-notifications": "0.1."
--    "ember-qunit-notifications": "0.1.1"
+-    "ember-cli-shims": "0.1.1"
++    "ember-cli-shims": "0.1.3"
 ```
 
 #### config/environment.js
@@ -942,13 +942,12 @@ check
 -    "ember-cli-test-loader": "1.1.0",
 +    "ember-cli-test-loader": "1.1.1",
      "ember-cli-uglify": "1.2.0",
--    "ember-cli-vibrant-js-shim": "0.1.0",
 -    "ember-data": "2.8.0",
 +    "ember-data": "2.9.0",
 -    "ember-export-application-global": "1.0.5",
 +    "ember-export-application-global": "1.1.1",
 -    "ember-load-initializers": "0.5.1",
--    "ember-load-initializers": "0.6.3",
++    "ember-load-initializers": "0.6.3",
 -    "ember-resolver": "2.1.0",
 +    "ember-resolver": "3.0.0",
 -    "loader.js": "4.0.11",
@@ -969,6 +968,6 @@ Small update to test html.
 
 ### Upgrading issues
 
-None, smooth as
+None, it went smooth as
 
 :rocket: :rocket: :rocket: :rocket: :rocket: :rocket:
