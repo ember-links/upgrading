@@ -1,8 +1,8 @@
-#Upgrading Ember CLI
+# Upgrading Ember CLI
 
 This is a guide I’ve written to document my experience in the hope that it could be useful to others going through the same process. It’s quite possible some of the recommendations I’ve made are not best practice (though they have worked for me) so I’d love to get any feedback and suggestions if you have them.
 
-##First, a little background
+## First, a little background
 
 Upgrading from Ember 1.13 to 2.x was something which for a time I was nervous about attempting. At that point in time my project had very limited (if any) tests and I was seeing a lot of deprecations logged both via the console and when I used Ember Inspector.
 
@@ -12,13 +12,13 @@ In particular learning about [ember-cli-deprecation-workflow](https://github.com
 
 Having said that though — and there is no easy was of saying this — to really have confidence I accepted that I'd need a much more comprehensive test suite. In hindsight, I'm really glad I took this approach and would *highly recommend* using this desire as the necessary motivating factor to start writing tests if you haven't already.
 
-Once you have tests which handle the majority of the use cases this process becomes much, much less intimidating — plus, you now have tests! 
+Once you have tests which handle the majority of the use cases this process becomes much, much less intimidating — plus, you now have tests!
 
 I’m not going to go into resources for writing tests right now (something for another time) - but once you do have them this is the process I use to get up to date when new versions of Ember (& Ember CLI) are released.
 
-##Next, this is my generic process to get from one version to the next
+## Next, this is my generic process to get from one version to the next
 
-###Flushing Deprecations
+### Flushing Deprecations
 
 Assuming you have already installed the [ember-cli-deprecation-workflow](https://github.com/mixonic/ember-cli-deprecation-workflow) run your tests and afterwards in the console flush the deprecations to see what needs to be done before updating by
 
@@ -26,7 +26,7 @@ Assuming you have already installed the [ember-cli-deprecation-workflow](https:/
 
 Then, simply(!) systematically work through each deprecation one by one as outlined in the documentation for the addon.
 
-###Managing NPM Dependencies
+### Managing NPM Dependencies
 
 > The caret, on the other hand, is more relaxed. It will update you to the most recent major version (the first number). ^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0.
 
@@ -38,11 +38,11 @@ I’ve found that [Greenkeeper.io](https://greenkeeper.io/) is a great help for 
 
 You’ll see in each individual guide the specific version numbers which I updated at the time (though if you are reading this for a very old version it may need to be double checked). One thing I can say is that the compatability was correct at the time so there is a pinned version which should still work.
 
-###Working on a new branch
+### Working on a new branch
 
 Before starting the upgrade process I always create a new branch to make it easy to get back to the previous state if something goes horribly wrong.
 
-#Upgrading to specific versions guides
+# Upgrading to specific versions guides
 
 - [Upgrading to Ember 2.4.3](#upgrading-to-ember-243)
 - [Upgrading to Ember 2.5.1](#upgrading-to-ember-251)
@@ -62,7 +62,7 @@ Folding together the changes listed made this:
 
 But in reality I had to make a few more updates, listed below.
 
-###Install Ember CLI
+### Install Ember CLI
 
 Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.4.3)
 
@@ -80,7 +80,7 @@ Update Project
 - `npm install`
 - `bower install`
 
-###Running `ember init`
+### Running `ember init`
 
 Begin the process of updating your project files
 
@@ -95,7 +95,7 @@ Though check that the you're `index.html`& `tests/index.html` look OK because th
 
 No other files appeared to have any code that needed to be updated, except for bower.json & package.json — the usual culprits — which I always prefer not to overwrite automatically and update by hand afterwards (see below).
 
-####bower.json
+#### bower.json
 
 updates
 
@@ -122,7 +122,7 @@ check
 
 ```
 
-####package.json
+#### package.json
 
 updates
 
@@ -195,7 +195,7 @@ ember-cli-content-security-policy is [no longer included by default](https://git
 
 ```
 
-###Testing the new version
+### Testing the new version
 
 Time to nombom and hope that there aren't any issues.
 
@@ -235,13 +235,13 @@ Update Project
 - `npm install`
 - `bower install`
 
-###Running `ember init`
+### Running `ember init`
 
 Begin the process of updating your project files
 
 - `ember init`
 
-####bower.json
+#### bower.json
 
 update
 
@@ -267,7 +267,7 @@ check
 
 ```
 
-####package.json
+#### package.json
 
 add
 
@@ -325,7 +325,7 @@ check
 
 ```
 
-###Testing the new version
+### Testing the new version
 
 Time to nombom and hope that there aren't any issues.
 
@@ -367,13 +367,13 @@ Update Project
 - `npm install`
 - `bower install`
 
-###Running `ember init`
+### Running `ember init`
 
 Begin the process of updating your project files
 
 - `ember init`
 
-####bower.json
+#### bower.json
 
 update
 
@@ -399,7 +399,7 @@ check
 
 ```
 
-####package.json
+#### package.json
 
 update
 
@@ -485,7 +485,7 @@ Update Project
 - `npm install`
 - `bower install`
 
-###Running `ember init`
+### Running `ember init`
 
 Begin the process of updating your project files
 
@@ -493,14 +493,14 @@ Begin the process of updating your project files
 
 Personally I wasn’t bothered by the editor config changes
 
-####.jshintrc
+#### .jshintrc
 
 ```diff
 -  "esnext": true,
 +  "esversion": 6,
 ```
 
-####index.html
+#### index.html
 
 This is important as relates to the new approach to URLs
 
@@ -522,7 +522,7 @@ Effectively add the rootURL to the asset URLs
 +    <script src="{{rootURL}}assets/instatube-app.js"></script>
 ```
 
-####router.js
+#### router.js
 
 Add rootURL to Router with
 
@@ -535,7 +535,7 @@ Add rootURL to Router with
  });
  ```
 
-####bower.json
+#### bower.json
 
 update
 
@@ -557,7 +557,7 @@ remove
 -    "ember-cli-test-loader": "0.2.2",
      "ember-qunit-notifications": "0.1.0"
 ```
-####config.js
+#### config.js
 
 For the new baseURL and rootURL change
 
@@ -570,7 +570,7 @@ in the ENV
 +    locationType: 'auto',
 ```
 
-and in 
+and in
 
 ```diff
    if (environment === 'test') {
@@ -580,7 +580,7 @@ and in
 +    ENV.locationType = 'none';
 ```
 
-####package.json
+#### package.json
 
 add
 
@@ -654,14 +654,14 @@ check
 ```
 
 
-####tests/.jshintrc
+#### tests/.jshintrc
 
 ```diff
 -  "esnext": true,
 +  "esversion": 6,
 ```
 
-####tests/index.html
+#### tests/index.html
 
 Updates once again for the new rootURL changes
 
@@ -688,7 +688,7 @@ Updates once again for the new rootURL changes
 +    <script src="{{rootURL}}assets/tests.js"></script>
 ```
 
-###Upgrading issues
+### Upgrading issues
 
 After this upgrade my tests weren’t passing immediately. It was pretty much exclusively due to the new URL system.
 
@@ -726,13 +726,13 @@ Update Project
 - `npm install`
 - `bower install`
 
-###Running `ember init`
+### Running `ember init`
 
 Begin the process of updating your project files
 
 - `ember init`
 
-####bower.json
+#### bower.json
 
 update
 
@@ -753,7 +753,7 @@ remove
 -    "ember-qunit-notifications": "0.1.0"
 ```
 
-####package.json
+#### package.json
 
 update
 
@@ -812,4 +812,3 @@ check
  }
 
 ```
-
