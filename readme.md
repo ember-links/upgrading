@@ -313,21 +313,21 @@ Besides that everything else was fine.
 
 :rocket: :rocket:
 
-## Upgrading to Ember 2.6.1
+## Upgrading to Ember 2.6.2
 
-Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.6.1)
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.6.2)
 
 Install Ember CLI Globally
 
 - `npm uninstall -g ember-cli`
 - `npm cache clean`
 - `bower cache clean`
-- `npm install -g ember-cli@2.6.1`
+- `npm install -g ember-cli@2.6.2`
 
 Update Project
 
 - `rm -rf node_modules bower_components dist tmp`
-- `npm install ember-cli@2.6.1 --save-dev`
+- `npm install ember-cli@2.6.2 --save-dev`
 - `npm install`
 - `bower install`
 
@@ -369,6 +369,7 @@ update
 
 - ember-cli-jshint to `"ember-cli-jshint": "1.0.4"`
 - ember-cli-qunit to `"ember-cli-qunit": "2.0.2"`
+- ember-cli-release to `"ember-cli-release": "0.2.9"`
 - ember-data to `"ember-data": "2.6.1"`
 - loader.js to `"loader.js": "4.0.9"`
 
@@ -382,7 +383,6 @@ check
 - ember-cli-htmlbars is `"ember-cli-htmlbars": "1.0.8"`
 - ember-cli-htmlbars-inline-precompile is `"ember-cli-htmlbars-inline-precompile": "0.3.2"`
 - ember-cli-inject-live-reload is `"ember-cli-inject-live-reload": "1.4.0"`
-- ember-cli-release is `"ember-cli-release": "0.2.8"`
 - ember-cli-sri is `"ember-cli-sri": "2.1.0"`
 - ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
 - ember-export-application-global is `"ember-export-application-global": "1.0.5"`
@@ -407,7 +407,8 @@ check
 +    "ember-cli-jshint": "1.0.4",
 -    "ember-cli-qunit": "1.4.0",
 +    "ember-cli-qunit": "2.0.2",
-     "ember-cli-release": "0.2.8",
+-    "ember-cli-release": "0.2.8",
++    "ember-cli-release": "0.2.9",
      "ember-cli-sri": "2.1.0",
      "ember-cli-uglify": "1.2.0",
 -    "ember-data": "2.5.3",
