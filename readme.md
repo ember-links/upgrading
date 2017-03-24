@@ -971,3 +971,174 @@ Small update to test html.
 None, it went smooth as
 
 :rocket: :rocket: :rocket: :rocket: :rocket: :rocket:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Upgrading to Ember 2.11.1
+
+Taken from the [official release](https://github.com/ember-cli/ember-cli/releases/tag/v2.11.1)
+
+Install Ember CLI Globally
+
+- `npm uninstall -g ember-cli`
+- `npm cache clean`
+- `bower cache clean`
+- `npm install -g ember-cli@2.11.1`
+
+Update Project
+
+- `rm -rf node_modules bower_components dist tmp`
+- `npm install ember-cli@2.11.1 --save-dev`
+- `npm install`
+- `bower install`
+
+### Running `ember init`
+
+Begin the process of updating your project files
+
+- `ember init`
+
+#### bower.json
+
+update
+
+- ember-cli-shims to `"ember-cli-shims": "0.1.3"`
+
+```diff
+   "dependencies": {
+-    "ember-cli-shims": "0.1.1"
++    "ember-cli-shims": "0.1.3"
+```
+
+#### config/environment.js
+
+Add the new extend prototypes for Ember Data
+
+```diff
+  EmberENV: {
+    FEATURES: {
+      // Here you can enable experimental features on an ember canary build
+      // e.g. 'with-controller': true
++   },
++   EXTEND_PROTOTYPES: {
++     // Prevent Ember Data from overriding Date.parse.
++     Date: false
+    }
+  },
+```
+
+#### .gitgnore
+
+Update to the npm-debug logs
+
+```diff
+  /.sass-cache
+  /connect.lock
+  /coverage/*
+  /libpeerconnection.log
+- npm-debug.log
++ npm-debug.log*
+  testem.log
+```
+
+#### package.json
+
+update
+
+- broccoli-asset-rev to `"broccoli-asset-rev": "2.5.0"`
+- ember-ajax to `"ember-ajax": "2.5.6"`
+- ember-cli to `"ember-cli": "2.9.1"`
+- ember-cli-app-version to `"ember-cli-app-version": "2.0.2"`
+- ember-cli-babel to `"ember-cli-babel": "5.2.4"`
+- ember-cli-htmlbars to `"ember-cli-htmlbars": "1.1.1"`
+- ember-cli-htmlbars to `"ember-cli-htmlbars-inline-precompile": "0.3.6"`
+- ember-cli-inject-live-reload to `"ember-cli-inject-live-reload": "1.6.1",`
+- ember-cli-qunit to `"ember-cli-qunit": "3.1.2"`
+- ember-cli-test-loader to `"ember-cli-test-loader": "1.1.1"`
+- ember-data to `"ember-data": "2.9.0"`
+- ember-export-application-global to `"ember-export-application-global": "1.1.1"`
+- ember-load-initializers to `"ember-load-initializers": "0.6.3"`
+- ember-resolver to `"ember-resolver": "3.0.0"`
+- loader.js to `"loader.js": "4.2.3"`
+
+check
+
+- ember-cli-dependency-checker is `"ember-cli-dependency-checker": "1.3.0"`
+- ember-cli-jshint is `"ember-cli-jshint": "2.0.1"`
+- ember-cli-release is `"ember-cli-release": "0.2.9"`
+- ember-cli-sri is `"ember-cli-sri": "2.1.1"`
+- ember-cli-uglify is `"ember-cli-uglify": "1.2.0"`
+
+
+```diff
+
+ {
+   "devDependencies": {
+-    "broccoli-asset-rev": "2.4.6",
++    "broccoli-asset-rev": "2.5.0",
+-    "ember-ajax": "2.5.1",
++    "ember-ajax": "2.5.6",
+-    "ember-cli": "^2.9.1",
++    "ember-cli": "2.9.1",
+-    "ember-cli-app-version": "2.0.0",
++    "ember-cli-app-version": "2.0.2",
+-    "ember-cli-babel": "5.1.10",
++    "ember-cli-babel": "5.2.4",
+     "ember-cli-dependency-checker": "1.3.0",
+-    "ember-cli-htmlbars": "1.1.0",
++    "ember-cli-htmlbars": "1.1.1",
+-    "ember-cli-htmlbars-inline-precompile": "0.3.5",
++    "ember-cli-htmlbars-inline-precompile": "0.3.6",
+-    "ember-cli-inject-live-reload": "1.4.1",
++    "ember-cli-inject-live-reload": "1.6.1",
+     "ember-cli-jshint": "2.0.1",
+-    "ember-cli-qunit": "3.0.1",
++    "ember-cli-qunit": "3.1.2",
+     "ember-cli-release": "0.2.9",
+     "ember-cli-sri": "2.1.1",
+-    "ember-cli-test-loader": "1.1.0",
++    "ember-cli-test-loader": "1.1.1",
+     "ember-cli-uglify": "1.2.0",
+-    "ember-data": "2.8.0",
++    "ember-data": "2.9.0",
+-    "ember-export-application-global": "1.0.5",
++    "ember-export-application-global": "1.1.1",
+-    "ember-load-initializers": "0.5.1",
++    "ember-load-initializers": "0.6.3",
+-    "ember-resolver": "2.1.0",
++    "ember-resolver": "3.0.0",
+-    "loader.js": "4.0.11",
++    "loader.js": "4.2.3",
+   }
+ }
+
+```
+
+#### tests/index.html
+
+Small update to test html.
+
+```diff
+-    <script src="{{rootURL}}testem.js" integrity=""></script>
++    <script src="/testem.js" integrity=""></script>
+```
+
+### Upgrading issues
+
+None, it went smooth as
+
+:rocket: :rocket: :rocket: :rocket: :rocket: :rocket:
